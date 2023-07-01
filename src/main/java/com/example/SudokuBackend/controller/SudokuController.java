@@ -52,14 +52,16 @@ public class SudokuController {
 	
 	@GetMapping("move/{row}/{column}")
 	public String move(@PathVariable int row, @PathVariable int column, HttpSession session) {
-		Move move = sudokuService.move(row, column);
+		Sudoku sudoku = (Sudoku)session.getAttribute("sudoku");
+		Move move = sudokuService.move(sudoku, row, column);
 		session.setAttribute("move", move);
 		return "Valid";
 	}
 	
 	@PostMapping("move")
 	public String move(@RequestBody Move move, HttpSession session) {
-		move = sudokuService.move(move.getRow(), move.getColumn());
+		Sudoku sudoku = (Sudoku)session.getAttribute("sudoku");
+		move = sudokuService.move(sudoku, move.getRow(), move.getColumn());
 		session.setAttribute("move", move);
 		return "Valid";
 	}
@@ -78,6 +80,7 @@ public class SudokuController {
 	public String moveAndInsert(@RequestBody Move move, @PathVariable int number, HttpSession session) {
 		
 		Sudoku sudoku = (Sudoku)session.getAttribute("sudoku");
+		move = sudokuService.move(sudoku, move.getRow(), move.getColumn());
 		return sudokuService.insert(sudoku, move, number);
 	}
 }
