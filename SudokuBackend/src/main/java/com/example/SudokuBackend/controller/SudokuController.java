@@ -36,12 +36,12 @@ public class SudokuController {
 		return sudoku;
 	}
 	
-	@PostMapping("create")
-	public SudokuDTO createNewSudoku(HttpSession session, @RequestBody SudokuDTO sudokuDTO){
+	@PostMapping("START")
+	public String createNewSudoku(HttpSession session, @RequestBody SudokuDTO sudokuDTO){
 		Sudoku sudoku = SudokuDTOConverter.convertFromDTO(sudokuDTO);
 		sudokuService.createNewSudoku(sudoku);
 		session.setAttribute("sudoku", sudoku);
-		return SudokuDTOConverter.convertToDTO(sudoku);
+		return "READY";
 	}
 	
 	@GetMapping("")
