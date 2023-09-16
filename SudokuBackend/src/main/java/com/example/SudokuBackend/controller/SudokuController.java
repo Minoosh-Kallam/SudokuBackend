@@ -33,6 +33,9 @@ public class SudokuController {
 		for(int k=0;k<10;k++){
 			System.out.println("Hello from branch2");
 		}
+		for(int j=0;j<10;j++){
+			System.out.println("Hello from branch1");
+		}
 		Sudoku sudoku = sudokuService.getNewSudoku();
 		session.setAttribute("sudoku", sudoku);
 		return sudoku;
