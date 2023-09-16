@@ -30,6 +30,9 @@ public class SudokuController {
 	
 	@GetMapping("new")
 	public Sudoku getNewSudoku(HttpSession session){
+		for(int k=0;k<10;k++){
+			System.out.println("Hello from branch2");
+		}
 		for(int j=0;j<10;j++){
 			System.out.println("Hello from branch1");
 		}
