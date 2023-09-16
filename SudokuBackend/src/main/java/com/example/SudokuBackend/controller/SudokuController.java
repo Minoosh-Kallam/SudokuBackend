@@ -30,8 +30,8 @@ public class SudokuController {
 	
 	@GetMapping("new")
 	public Sudoku getNewSudoku(HttpSession session){
-		for(int i=0;i<10;i++){
-			System.out.println("Hello");
+		for(int k=0;k<10;k++){
+			System.out.println("Hello from branch2");
 		}
 		Sudoku sudoku = sudokuService.getNewSudoku();
 		session.setAttribute("sudoku", sudoku);
