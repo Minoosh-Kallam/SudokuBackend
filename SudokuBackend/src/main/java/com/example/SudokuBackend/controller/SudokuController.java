@@ -30,7 +30,9 @@ public class SudokuController {
 	
 	@GetMapping("new")
 	public Sudoku getNewSudoku(HttpSession session){
-		
+		for(int i=0;i<10;i++){
+			System.out.println("Hello");
+		}
 		Sudoku sudoku = sudokuService.getNewSudoku();
 		session.setAttribute("sudoku", sudoku);
 		return sudoku;
